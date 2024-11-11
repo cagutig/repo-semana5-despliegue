@@ -28,20 +28,11 @@ jobs:
       - run:
           name: Deploy to Railway App
           command: |
-            cd bankchurn-api 
-            railway up --service=adequate-nourishment
-            railway up --detach
-
-
-tags_only: &tags_only
-  filters:
-    branches:
-      ignore: /.*/
-    tags:
-      only: /^.*/
+            cd bankchurn-api
+            railway up --service=adequate-nourishment --detach
 
 workflows:
-  version: 1
+  version: 2
   deploy_pipeline:
     jobs:
       - deploy_app_to_railway:
@@ -49,3 +40,4 @@ workflows:
             branches:
               only:
                 - main
+
